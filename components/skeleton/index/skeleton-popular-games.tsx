@@ -3,6 +3,7 @@ import ContentLoader from "react-content-loader";
 
 export const SkeletonPopularGames = (props) => (
     <ContentLoader
+        uniqueKey="populargames"
         width={100}
         height={100}
         style={{ width: "100%", height: "657px" }}
