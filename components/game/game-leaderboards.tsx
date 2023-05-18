@@ -5,89 +5,84 @@ import { ReactElement, useState } from "react";
 import { UserLink } from "../links/links";
 import searchStyles from "../css/Search.module.scss";
 import styles from "../css/Games.module.scss";
+import DataTable from 'react-data-table-component';
+import datatablestyles from '../css/ReactDataTable.module.scss';
 
-export const getLeaderboard = (
-    name: string,
-    leaderboards: Count[],
-    search: string,
-    transform?: (
-        // eslint-disable-next-line no-unused-vars
-        stat: string | number,
-        // eslint-disable-next-line no-unused-vars
-        key: number
-    ) => string | number | ReactElement
-) => {
+type Leaderboard = {
+  rank: number;
+  username: string;
+  stat: string | number;
+  meta?: any;
+  game?: string | undefined;
+  category?: string | undefined;
+  url?: string | undefined;
+};
+
+export const getLeaderboard = (name: string, leaderboards: Count[], search: string, transform?: (
+    stat: string | number,
+    key: number
+) => string | number | ReactElement) => {
+
+    const customStyles = {
+        headCells: {
+            className: datatablestyles.headCells,
+        },
+        cells: {
+            className: datatablestyles.cells,
+        },
+    };
+
+
+    const filteredLeaderboards = leaderboards.filter(leaderboard => 
+      leaderboard.username.toLowerCase().includes(search.toLowerCase())
+    );
+
+    const columns: TableColumn<{ rank: number; username: string; stat: string | number; meta?: any; game?: string | undefined; category?: string | undefined; url?: string | undefined; }>[] = [
+        {
+          name: '#',
+          selector: (row) => row.rank,
+          sortable: true,
+          width: '14%',
+          center: true,
+        },
+        {
+          name: 'User',
+          cell: (row) => <UserLink url={row.url} username={row.username} />,
+          width: '38%',
+          center: true,
+        },
+        {
+          name: name,
+          cell: (row) => {
+            return transform ? transform(row.stat, row.rank - 1) : row.stat.toLocaleString();
+          },
+          width: '38%',
+          center: true,
+        },
+    ];
+
+    const data = filteredLeaderboards.map((leaderboard, index) => {
+        return {
+            ...leaderboard,
+            rank: index + 1,
+        };
+    });
+
     return (
-        <Row>
-            <Col>
-                <Table bordered striped={search.length == 0} hover responsive>
-                    <thead>
-                        <tr>
-                            <th style={{ width: "14%", textAlign: "center" }}>
-                                #
-                            </th>
-                            <th style={{ width: "38%", textAlign: "center" }}>
-                                User
-                            </th>
-                            <th style={{ width: "38%", textAlign: "center" }}>
-                                {name}
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {leaderboards &&
-                            leaderboards.map((leaderboard, key) => {
-                                const url = leaderboard.url;
-
-                                if (
-                                    transform &&
-                                    !transform(leaderboard.stat, key)
-                                )
-                                    return <></>;
-
-                                return (
-                                    <tr
-                                        key={
-                                            leaderboard.username +
-                                            leaderboard.stat +
-                                            leaderboard.meta
-                                        }
-                                        style={{
-                                            display: leaderboard.username
-                                                .toLowerCase()
-                                                .includes(search.toLowerCase())
-                                                ? ""
-                                                : "none",
-                                        }}
-                                    >
-                                        <td style={{ textAlign: "center" }}>
-                                            {key + 1}{" "}
-                                            {search.length > 0 &&
-                                                `/ ${leaderboards.length}`}
-                                        </td>
-                                        <td style={{ textAlign: "center" }}>
-                                            <UserLink
-                                                url={url}
-                                                username={leaderboard.username}
-                                            />
-                                        </td>
-                                        <td style={{ textAlign: "center" }}>
-                                            {transform
-                                                ? transform(
-                                                      leaderboard.stat,
-                                                      key
-                                                  )
-                                                : leaderboard.stat.toLocaleString()}
-                                        </td>
-                                    </tr>
-                                );
-                            })}
-                    </tbody>
-                </Table>
-            </Col>
-        </Row>
+        <DataTable
+          title=""
+          columns={columns}
+          data={data}
+          customStyles={customStyles}
+          striped={search.length === 0}
+          highlightOnHover
+          responsive
+          pagination
+          
+        />
     );
 };
+
 
 export const getStatsTable = (values: Map<string, string>) => {
     return (
