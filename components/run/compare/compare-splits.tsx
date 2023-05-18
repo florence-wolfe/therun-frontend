@@ -7,9 +7,7 @@ import { Col, Row } from "react-bootstrap";
 import { UserLink } from "../../links/links";
 import { getSplitsHistoryUrl } from "../../../lib/get-splits-history";
 import { AppContext } from "../../../common/app.context";
-
-// eslint-disable-next-line import/no-commonjs
-const levenshtein = require("js-levenshtein");
+import levenshtein from "js-levenshtein";
 
 interface UserData {
     meta: any;

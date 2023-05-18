@@ -26,13 +26,13 @@ export const RecommendedStream = ({
     // Not sure how else to do this, but this works
     const pixelsForSplit = 27.9;
 
-    const usePrevious = <T extends unknown>(value: T): T | undefined => {
+    function usePrevious<T>(value: T): T | undefined {
         const ref = useRef<T>();
         useEffect(() => {
             ref.current = value;
-        });
+        }, [value]);
         return ref.current;
-    };
+    }
 
     const previous = usePrevious({ activeLiveRun });
 

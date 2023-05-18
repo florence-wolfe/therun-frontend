@@ -350,11 +350,7 @@ export const Game = ({ game }: { game: string }) => {
                             />
                         )}
                     </Tab>
-                    <Tab
-                        eventKey="wrHistory"
-                        title="Record Stats"
-                        onClick={() => {}}
-                    >
+                    <Tab eventKey="wrHistory" title="Record Stats">
                         <CategoryRecordHistory
                             game={data.data.game.display}
                             category={currentCategory}

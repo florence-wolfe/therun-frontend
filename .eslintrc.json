@@ -2,6 +2,7 @@
     "extends": [
         "next/core-web-vitals",
         "plugin:github/recommended",
+        "plugin:react/recommended",
         "plugin:prettier/recommended",
         "eslint:recommended",
         "plugin:@typescript-eslint/recommended"
@@ -19,6 +20,8 @@
         "github/array-foreach": "off",
         "eqeqeq": "off",
         "i18n-text/no-en": "off",
+        "react/prop-types": "off",
+        "react/react-in-jsx-scope": "off",
         "prettier/prettier": [
             "error",
             {
