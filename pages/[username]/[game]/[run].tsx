@@ -79,9 +79,8 @@ const RunPage = ({
             parseInt(run.gameTimeData.personalBest) &&
             !forceRealTime
     );
-    const [gameData, setGameData] = useState(null);
+    const [gameData, setGameData] = useState<Nullable<StatsData>>(null);
     const [dataLoading, setDataLoading] = useState(false);
-
     const [realTimeRuns, setRealTimeRuns] = useState(null);
     const [gameTimeRuns, setGameTimeRuns] = useState(null);
     const [liveRun, setLiveRun] = useState(liveData);
@@ -121,7 +120,7 @@ const RunPage = ({
             })
         ).json();
 
-        setGameData(gamesData as any);
+        setGameData(gamesData);
     };
 
     useEffect(() => {
