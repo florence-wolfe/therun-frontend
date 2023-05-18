@@ -355,8 +355,8 @@ const calculateConsistencyScore = (
 };
 
 const consistencyScoreIndication = (score: number) => {
-    let phrase: string = "";
-    let color: string = "";
+    let phrase = "";
+    let color = "";
 
     if (score < 3) {
         phrase = "Weak";

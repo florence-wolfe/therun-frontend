@@ -149,10 +149,10 @@ export const getDurationAsTimer = (duration: string) => {
 
 export const getFormattedString = (
     duration: string,
-    withMillis: boolean = false,
-    padded: boolean = false,
-    human: boolean = true,
-    difference: boolean = false,
+    withMillis = false,
+    padded = false,
+    human = true,
+    difference = false,
     showDays = false
 ) => {
     let milli = parseInt(duration);

@@ -14,7 +14,7 @@ export const EditRun = ({
     abort: () => void;
     session: any;
     username: string;
-    // eslint-disable-next-line no-unused-vars
+
     forceUpdate: (newRun: Run) => void;
 }) => {
     const [form, setForm] = useState({
