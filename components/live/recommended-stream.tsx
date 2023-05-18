@@ -46,7 +46,7 @@ export const RecommendedStream = ({
 
         if (scrollBox) {
             if (
-                activeLiveRun.currentSplitIndex !=
+                activeLiveRun.currentSplitIndex !==
                 previous?.activeLiveRun.currentSplitIndex
             ) {
                 scrollBox.scrollTop = scrollDistance - 4 * pixelsForSplit;
@@ -54,7 +54,7 @@ export const RecommendedStream = ({
 
             if (
                 !manuallyChangedSplit ||
-                (previous && previous.activeLiveRun.user != activeLiveRun.user)
+                (previous && previous.activeLiveRun.user !== activeLiveRun.user)
             ) {
                 setSelectedSplit(activeLiveRun.currentSplitIndex);
             }
@@ -77,11 +77,11 @@ export const RecommendedStream = ({
                 const colors = patreonStyles();
                 const { colorPreference = 0 } = preferences;
                 let style =
-                    colors.find((val) => val.id == colorPreference) ||
+                    colors.find((val) => val.id === colorPreference) ||
                     colors[0];
                 style = dark ? style.style[0] : style.style[1];
 
-                if (style.color != "transparent") {
+                if (style.color !== "transparent") {
                     borderColor = style.color;
                 } else {
                     gradient = style.background;
@@ -172,7 +172,7 @@ export const getSplitStatus = (liveRun: LiveRun, k: number) => {
     const time = split.splitTime;
 
     let singleTime = null;
-    if (k == 0) {
+    if (k === 0) {
         singleTime = time;
     } else if (liveRun.splits[k - 1].splitTime) {
         singleTime = time - liveRun.splits[k - 1].splitTime;
@@ -181,21 +181,21 @@ export const getSplitStatus = (liveRun: LiveRun, k: number) => {
     const status: Status =
         liveRun.currentSplitIndex < k
             ? "future"
-            : liveRun.currentSplitIndex == k
+            : liveRun.currentSplitIndex === k
             ? "current"
             : time
             ? "completed"
             : "skipped";
     const name = split.name.toString();
     const isSubSplit = name ? name.startsWith("-") : false;
-    const isActive = status == "current";
+    const isActive = status === "current";
 
     const newComparisons = {};
 
     Object.entries(split.comparisons).forEach(([splitName, value]) => {
         let splitSingleTime = null;
 
-        if (k == 0) {
+        if (k === 0) {
             splitSingleTime = value;
         } else if (liveRun.splits[k - 1].comparisons[splitName]) {
             splitSingleTime =
@@ -212,9 +212,9 @@ export const getSplitStatus = (liveRun: LiveRun, k: number) => {
     });
 
     const isGold =
-        status == "completed" &&
+        status === "completed" &&
         newComparisons["Best Segments"] &&
-        (k == 0 || liveRun.splits[k - 1].splitTime) &&
+        (k === 0 || liveRun.splits[k - 1].splitTime) &&
         newComparisons["Best Segments"].singleTime &&
         singleTime < newComparisons["Best Segments"].singleTime;
 

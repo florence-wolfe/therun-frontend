@@ -128,7 +128,7 @@ export const LiverunStatsPanel = ({
             </div>
             <hr style={{ marginBottom: "0.5rem" }} />
 
-            {selectedStats == "general" && (
+            {selectedStats === "general" && (
                 <GeneralStats
                     liveRun={liveRun}
                     sessions={sessions}
@@ -136,7 +136,7 @@ export const LiverunStatsPanel = ({
                 />
             )}
 
-            {selectedStats == "split-detail" && (
+            {selectedStats === "split-detail" && (
                 <SplitDetails
                     liveRun={liveRun}
                     splits={splits}
@@ -144,7 +144,7 @@ export const LiverunStatsPanel = ({
                     selectedSplit={selectedSplit}
                 />
             )}
-            {selectedStats == "current-run-detail" && (
+            {selectedStats === "current-run-detail" && (
                 <CurrentRunDetails
                     liveRun={liveRun}
                     splits={splits}

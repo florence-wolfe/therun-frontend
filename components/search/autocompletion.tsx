@@ -82,7 +82,7 @@ export const AutoCompletion = () => {
     };
 
     const transformResult = (type: string, result: string, results: any) => {
-        if (type == "runs") {
+        if (type === "runs") {
             const split = result.split("//");
 
             if (split.length !== 3) return null;
@@ -106,7 +106,7 @@ export const AutoCompletion = () => {
             );
         }
 
-        const url = type == "users" ? `/${result}` : `/game/${result}`;
+        const url = type === "users" ? `/${result}` : `/game/${result}`;
         return (
             <a key={result} href={url} className={styles.suggestionLink}>
                 <li key={result}>{result}</li>

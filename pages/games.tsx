@@ -157,7 +157,7 @@ export const Games = ({ initGames }: { initGames: Game[] }) => {
                         <Col xl={6} lg={12} key={game.game}>
                             <div className={styles.image}>
                                 <a href={`/game/${gameUrl}`}>
-                                    {game.image && game.image != "noimage" && (
+                                    {game.image && game.image !== "noimage" && (
                                         <Image
                                             alt={"Game Image"}
                                             src={game.image}
@@ -166,7 +166,7 @@ export const Games = ({ initGames }: { initGames: Game[] }) => {
                                         />
                                     )}
                                     {(!game.image ||
-                                        game.image == "noimage") && (
+                                        game.image === "noimage") && (
                                         <div className={styles.backupImage}>
                                             <Image
                                                 alt={"Game Image"}

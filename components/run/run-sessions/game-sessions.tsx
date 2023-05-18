@@ -48,8 +48,8 @@ export const GameSessions = ({
 
     const totalCount = sessions.length;
 
-    if (runsPast != "all") {
-        if (runsPast == "finished") {
+    if (runsPast !== "all") {
+        if (runsPast === "finished") {
             sessions = sessions.filter(
                 (session) => session.finishedRuns.length > 0
             );
@@ -100,14 +100,14 @@ export const GameSessions = ({
         }
 
         if (sortColumn === "times") {
-            if (a.finishedRuns.length == 0 && b.finishedRuns.length == 0)
+            if (a.finishedRuns.length === 0 && b.finishedRuns.length === 0)
                 return -1;
 
-            if (b.finishedRuns.length == 0) {
+            if (b.finishedRuns.length === 0) {
                 return 1;
             }
 
-            if (a.finishedRuns.length == 0) {
+            if (a.finishedRuns.length === 0) {
                 return -1;
             }
 
@@ -152,9 +152,9 @@ export const GameSessions = ({
         if (target.includes("«")) {
             setActive(1);
         } else if (target.includes("‹")) {
-            setActive(active == 1 ? 1 : active - 1);
+            setActive(active === 1 ? 1 : active - 1);
         } else if (target.includes("›")) {
-            setActive(active == last ? last : active + 1);
+            setActive(active === last ? last : active + 1);
         } else if (target.includes("»")) {
             setActive(last);
         } else {
@@ -301,7 +301,7 @@ export const GameSessions = ({
                                 }
 
                                 if (
-                                    split.totalTime != "0" &&
+                                    split.totalTime !== "0" &&
                                     (!bestTimePerSplit[key] ||
                                         bestTimePerSplit[key] >
                                             parseInt(split.totalTime))
@@ -596,7 +596,7 @@ export const buildItems = (active: number, last: number) => {
             <Pagination.Item
                 className={paginationStyles.optional}
                 key={number}
-                active={number == active}
+                active={number === active}
             >
                 {number}
             </Pagination.Item>

@@ -81,7 +81,7 @@ export const History = ({
 
         if (
             h.time &&
-            h.splits.length == splits.length &&
+            h.splits.length === splits.length &&
             parseInt(h.time) >= parseInt(splits[splits.length - 1].total.time)
         ) {
             if (currentPb == null || parseInt(h.time) < currentPb.time) {
@@ -126,10 +126,10 @@ export const History = ({
         return classNames;
     };
 
-    if (history.length > 0 && runsPast != "all") {
-        if (runsPast == "finished") {
+    if (history.length > 0 && runsPast !== "all") {
+        if (runsPast === "finished") {
             history = history.filter((run) => !!run.time);
-        } else if (runsPast == "pb") {
+        } else if (runsPast === "pb") {
             history = history.filter((run) => !!run.time);
 
             if (history.length > 0) {
@@ -191,7 +191,7 @@ export const History = ({
         history = history.filter((run) => {
             let include = false;
 
-            if (!run.splits[currentSplitFilter] && splitFilter != "full") {
+            if (!run.splits[currentSplitFilter] && splitFilter !== "full") {
                 return false;
             }
 
@@ -210,9 +210,10 @@ export const History = ({
                 ? run.splits[situationalCurrentSplitFilter as number].totalTime
                 : run.splits[situationalCurrentSplitFilter as number].splitTime;
 
-            if (!parseInt(time) && parseInt(time) == 0) return false;
+            // TODO: Confirm this is the correct conditional
+            if (!parseInt(time) && parseInt(time) === 0) return false;
 
-            if (time == "0") return false;
+            if (time === "0") return false;
 
             if (splitFilterType === "under") {
                 include = parseInt(time) <= splitFilterTwo;
@@ -250,7 +251,7 @@ export const History = ({
             res = a.splits.length > b.splits.length ? 1 : -1;
         }
 
-        if (sortColumn == "split") {
+        if (sortColumn === "split") {
             const aTime = totalTime
                 ? a.splits[
                       splitFilter === "full" ? a.splits.length - 1 : splitFilter
@@ -299,9 +300,9 @@ export const History = ({
         if (target.includes("«")) {
             setActive(1);
         } else if (target.includes("‹")) {
-            setActive(active == 1 ? 1 : active - 1);
+            setActive(active === 1 ? 1 : active - 1);
         } else if (target.includes("›")) {
-            setActive(active == last ? last : active + 1);
+            setActive(active === last ? last : active + 1);
         } else if (target.includes("»")) {
             setActive(last);
         } else {
@@ -1001,7 +1002,7 @@ export const History = ({
                                             <Col>
                                                 {run.time
                                                     ? "Finished run!"
-                                                    : run.splits.length ==
+                                                    : run.splits.length ===
                                                       splits.length
                                                     ? splits[splits.length - 1]
                                                           .name
@@ -1466,7 +1467,7 @@ const buildItems = (active: number, last: number) => {
             <Pagination.Item
                 className={paginationStyles.optional}
                 key={number}
-                active={number == active}
+                active={number === active}
             >
                 {number}
             </Pagination.Item>

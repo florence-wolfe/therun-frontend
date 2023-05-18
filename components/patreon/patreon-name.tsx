@@ -48,7 +48,7 @@ export const PatreonName = ({
 
     const colors = patreonStyles();
 
-    let style = colors.find((val) => val.id == color);
+    let style = colors.find((val) => val.id === color);
 
     if (!style) style = colors[0];
 

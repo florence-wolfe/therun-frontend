@@ -116,7 +116,7 @@ export const WrHistory = ({
     const players = [];
 
     historyData.forEach((history) => {
-        if (!players.find((p) => p.username == history.user)) {
+        if (!players.find((p) => p.username === history.user)) {
             const index = players.length;
             const shape = availableShapes[index];
             const color = availableColors[index];
@@ -131,7 +131,7 @@ export const WrHistory = ({
     const victoryData = historyData.map((history, n) => {
         const data = historyData[n];
 
-        const user = players.find((p) => p.username == data.user);
+        const user = players.find((p) => p.username === data.user);
 
         return {
             x: new Date(history.endedAt),
@@ -165,11 +165,14 @@ export const WrHistory = ({
                             data={victoryData}
                             dependentAxis
                             tickFormat={(a, b, c) => {
-                                if (b == 0 && historyData.length > 1)
+                                if (b === 0 && historyData.length > 1)
                                     a =
                                         historyData[historyData.length - 1]
                                             .time;
-                                if (b == c.length - 1 && historyData.length > 0)
+                                if (
+                                    b === c.length - 1 &&
+                                    historyData.length > 0
+                                )
                                     a = historyData[0].time;
                                 return getFormattedString(a);
                             }}
@@ -208,7 +211,7 @@ export const WrHistory = ({
                             const currentHistoryData = historyData[n];
 
                             const user = players.find(
-                                (p) => p.username == currentHistoryData.user
+                                (p) => p.username === currentHistoryData.user
                             );
 
                             return (
@@ -249,7 +252,7 @@ export const WrHistory = ({
                                         const data = historyData[n.index];
 
                                         const user = players.find(
-                                            (p) => p.username == data.user
+                                            (p) => p.username === data.user
                                         );
 
                                         return user.color;

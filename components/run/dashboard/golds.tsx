@@ -71,17 +71,17 @@ export const Golds = ({
     const goldRuns: GoldHistory = useSplits.map((split, arrayKey) => {
         const key = split.id;
 
-        if (key == undefined) return <></>;
+        if (key === undefined || key === null) return <></>;
 
         const golds: GoldHistory = [];
 
         useHistory
             .filter(
                 (run) =>
-                    run.splits.length > key - 1 && run.startedAt != undefined
+                    run.splits.length > key - 1 && run.startedAt !== undefined
             )
             .forEach((run) => {
-                if (run.startedAt == undefined) return false;
+                if (!run.startedAt) return false;
 
                 const currentSplit = run.splits[key];
 
@@ -94,13 +94,14 @@ export const Golds = ({
                 const bestPossibleTime = combinedSplitNames
                     .map((search) => {
                         return parseInt(
-                            splits.find((thisSplit) => thisSplit.name == search)
-                                .single.bestPossibleTime
+                            splits.find(
+                                (thisSplit) => thisSplit.name === search
+                            ).single.bestPossibleTime
                         );
                     })
                     .reduce((a, partial) => a + partial, 0);
 
-                if (!currentSplit || currentSplit.splitTime == "0")
+                if (!currentSplit || currentSplit.splitTime === "0")
                     return false;
 
                 if (parseInt(currentSplit.splitTime) < bestPossibleTime)
@@ -118,7 +119,7 @@ export const Golds = ({
                 }
 
                 if (
-                    golds.length == 0 ||
+                    golds.length === 0 ||
                     parseInt(golds[golds.length - 1].time) >
                         parseInt(currentSplit.splitTime)
                 ) {
@@ -157,7 +158,7 @@ export const Golds = ({
         }
 
         if (sortColumn === "split") {
-            if (a.splitKey == b.splitKey) res = 0;
+            if (a.splitKey === b.splitKey) res = 0;
             else res = a.splitKey > b.splitKey ? 1 : -1;
         }
 
@@ -211,9 +212,9 @@ export const Golds = ({
         if (target.includes("«")) {
             setActive(1);
         } else if (target.includes("‹")) {
-            setActive(active == 1 ? 1 : active - 1);
+            setActive(active === 1 ? 1 : active - 1);
         } else if (target.includes("›")) {
-            setActive(active == last ? last : active + 1);
+            setActive(active === last ? last : active + 1);
         } else if (target.includes("»")) {
             setActive(last);
         } else {
@@ -239,7 +240,7 @@ export const Golds = ({
                 return runHistory;
             }
 
-            if (prevSplit.splitTime == "0" || currentSplit.splitTime == "0") {
+            if (prevSplit.splitTime === "0" || currentSplit.splitTime === "0") {
                 currentSplit.splitTime = "0";
             } else if (
                 parseInt(prevSplit.splitTime) <
@@ -306,7 +307,7 @@ export const Golds = ({
             <Row>
                 <Col md={6} sm={12}>
                     <h2 style={{ width: "18rem" }}>
-                        {splitFilter == "no-filter" ? (
+                        {splitFilter === "no-filter" ? (
                             "Gold Explorer"
                         ) : (
                             <a
@@ -375,7 +376,7 @@ export const Golds = ({
                         <Col>
                             <h3>Stats</h3>
                         </Col>
-                        {splitFilter == "no-filter" && hasMergedSplits && (
+                        {splitFilter === "no-filter" && hasMergedSplits && (
                             <Col
                                 style={{
                                     display: "flex",
@@ -403,7 +404,7 @@ export const Golds = ({
                                 />
                             </Col>
                         )}
-                        {splitFilter == "no-filter" &&
+                        {splitFilter === "no-filter" &&
                             !hasMergedSplits &&
                             hasSubsplits && (
                                 <Col
@@ -458,10 +459,11 @@ export const Golds = ({
                         <tbody>
                             {goldRuns
                                 .filter((golds: GoldSplit[]) => {
-                                    if (splitFilter == "no-filter") return true;
+                                    if (splitFilter === "no-filter")
+                                        return true;
                                     const best = golds[golds.length - 1];
 
-                                    return best && splitFilter == best.split;
+                                    return best && splitFilter === best.split;
                                 })
                                 .map((golds: GoldSplit[], n, a) => {
                                     const best = golds[golds.length - 1];
@@ -569,7 +571,7 @@ export const Golds = ({
                                                     </div>
                                                 </td>
                                             )}
-                                            {n == a.length - 1 && <td></td>}
+                                            {n === a.length - 1 && <td></td>}
                                         </tr>
                                     );
                                 })}

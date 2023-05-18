@@ -36,10 +36,10 @@ export const UserOverview = ({
     const images = Array.from(runs).filter(([game]) => {
         game = game.split("#")[0];
         const globalData = allGlobalGameData.find(
-            (data) => data.display.toLowerCase() == game.toLowerCase()
+            (data) => data.display.toLowerCase() === game.toLowerCase()
         );
 
-        return globalData && globalData.image && globalData.image != "noimage";
+        return globalData && globalData.image && globalData.image !== "noimage";
     });
 
     let lastGame = null;
@@ -73,7 +73,7 @@ export const UserOverview = ({
 
                     if (lastVars.includes(variable)) return false;
 
-                    return k != "Verified";
+                    return k !== "Verified";
                 });
 
                 lastVars = varsCopy;
@@ -82,7 +82,7 @@ export const UserOverview = ({
                 const longestVar = Math.max(...varLenghts);
 
                 const globalData = allGlobalGameData.find(
-                    (data) => data.display.toLowerCase() == game.toLowerCase()
+                    (data) => data.display.toLowerCase() === game.toLowerCase()
                 );
                 const forceRealTime = globalData && globalData.forceRealTime;
                 let xl = 6;
@@ -106,7 +106,7 @@ export const UserOverview = ({
                                 {!sameGame && (
                                     <a href={`/game/${game}`}>
                                         {globalData.image &&
-                                            globalData.image != "noimage" && (
+                                            globalData.image !== "noimage" && (
                                                 <Image
                                                     alt={"Game Image"}
                                                     src={globalData.image}
@@ -115,7 +115,7 @@ export const UserOverview = ({
                                                 />
                                             )}
                                         {(!globalData.image ||
-                                            globalData.image == "noimage") && (
+                                            globalData.image === "noimage") && (
                                             <Image
                                                 alt={"Logo"}
                                                 src={
@@ -328,9 +328,9 @@ export const UserOverview = ({
                                                             }}
                                                             onClick={() => {
                                                                 if (
-                                                                    openedEdit[0] ==
+                                                                    openedEdit[0] ===
                                                                         game &&
-                                                                    openedEdit[1] ==
+                                                                    openedEdit[1] ===
                                                                         run.originalRun
                                                                 ) {
                                                                     setOpenedEdit(
@@ -408,8 +408,8 @@ export const UserOverview = ({
 
                         {orderedRuns.map((run: Run, runKey) => {
                             return (
-                                openedEdit[0] == game &&
-                                openedEdit[1] == run.originalRun && (
+                                openedEdit[0] === game &&
+                                openedEdit[1] === run.originalRun && (
                                     <div key={run.originalRun}>
                                         <EditRun
                                             run={run}

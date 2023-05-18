@@ -18,7 +18,6 @@
         "no-irregular-whitespace": "off",
         "import/no-named-as-default": "off",
         "github/array-foreach": "off",
-        "eqeqeq": "off",
         "i18n-text/no-en": "off",
         "react/prop-types": "off",
         "react/react-in-jsx-scope": "off",

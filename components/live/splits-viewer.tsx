@@ -139,7 +139,7 @@ export const SplitsViewer = ({
                                             }
                                         >
                                             <div className={styles.splitTime}>
-                                                {splitStatus.status ==
+                                                {splitStatus.status ===
                                                 "completed" ? (
                                                     <Difference
                                                         one={split.splitTime}
@@ -154,7 +154,7 @@ export const SplitsViewer = ({
                                                         }
                                                         human={false}
                                                     />
-                                                ) : splitStatus.status ==
+                                                ) : splitStatus.status ===
                                                       "skipped" ||
                                                   !activeLiveRun.splits[k]
                                                       .comparisons[
@@ -171,7 +171,7 @@ export const SplitsViewer = ({
                                                     <DurationToFormatted
                                                         withMillis={false}
                                                         duration={
-                                                            k == 0
+                                                            k === 0
                                                                 ? activeLiveRun
                                                                       .splits[0]
                                                                       .comparisons[
@@ -199,10 +199,10 @@ export const SplitsViewer = ({
                                             }
                                         >
                                             <div className={styles.splitTime}>
-                                                {splitStatus.status ==
+                                                {splitStatus.status ===
                                                 "skipped" ? (
                                                     "-"
-                                                ) : splitStatus.status ==
+                                                ) : splitStatus.status ===
                                                   "completed" ? (
                                                     <b>
                                                         <DurationToFormatted
@@ -240,7 +240,7 @@ export const SplitsViewer = ({
                         <tbody>
                             <tr
                                 className={
-                                    activeLiveRun.currentSplitIndex + 1 ==
+                                    activeLiveRun.currentSplitIndex + 1 ===
                                     activeLiveRun.splits.length
                                         ? styles.finalSplitRow
                                         : ""

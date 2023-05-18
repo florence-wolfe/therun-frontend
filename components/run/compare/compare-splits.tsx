@@ -42,7 +42,7 @@ export const CompareSplits = ({
             : statsData.stats;
 
     let catLeaderboard = stats.categoryLeaderboards.find(
-        (leaderboard) => leaderboard.categoryNameDisplay == category
+        (leaderboard) => leaderboard.categoryNameDisplay === category
     );
 
     if (!catLeaderboard) {
@@ -59,7 +59,7 @@ export const CompareSplits = ({
     if (!catLeaderboard) return <>Could not find similar runs...</>;
 
     const currentUserData =
-        currentUser != "no-selection" && loaded
+        currentUser !== "no-selection" && loaded
             ? userData.get(currentUser)[!gameTime ? "runs" : "runsGameTime"]
             : null;
 
@@ -72,11 +72,11 @@ export const CompareSplits = ({
                     <h2>
                         Compare{" "}
                         {currentUser &&
-                            (currentUser != "no-selection" ||
+                            (currentUser !== "no-selection" ||
                                 currentUserData) &&
                             "to "}
                         {currentUser &&
-                            (currentUser != "no-selection" ||
+                            (currentUser !== "no-selection" ||
                                 currentUserData) && (
                                 <UserLink username={currentUser} />
                             )}
@@ -89,7 +89,7 @@ export const CompareSplits = ({
                 onChange={async (e) => {
                     const selectedUser = e.currentTarget.value.split(" (")[0];
                     const fullUser = catLeaderboard.pbLeaderboard.find(
-                        (l) => l.username == selectedUser
+                        (l) => l.username === selectedUser
                     );
                     const correctUrl = fullUser.url;
                     setCurrentUser(selectedUser);
@@ -146,13 +146,13 @@ export const CompareSplits = ({
                     }
                 }}
             >
-                {(currentUser == "no-selection" || !currentUserData) && (
+                {(currentUser === "no-selection" || !currentUserData) && (
                     <option key={"no-selection"}>
                         Select run to compare to
                     </option>
                 )}
                 {catLeaderboard.pbLeaderboard
-                    .filter((lb) => lb.username != username)
+                    .filter((lb) => lb.username !== username)
                     .map((lb) => {
                         return (
                             <option
@@ -166,7 +166,7 @@ export const CompareSplits = ({
                     })}
             </select>
             <hr />
-            {currentUser != "no-selection" && !loaded && (
+            {currentUser !== "no-selection" && !loaded && (
                 <>Loading data for {currentUser}...</>
             )}
             {currentUserData && (

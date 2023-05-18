@@ -51,12 +51,12 @@ const youtubeParser = (url: string) => {
     const regExp =
         /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#&?]*).*/;
     const match = url.match(regExp);
-    return match && match[7].length == 11 ? match[7] : false;
+    return match && match[7].length === 11 ? match[7] : false;
 };
 
 const Twitch = ({ vod }: { vod: string }) => {
     const split = vod.split("/videos/");
-    if (split.length != 2)
+    if (split.length !== 2)
         return (
             <div style={{ color: "red" }}>
                 The video url seems incorrect... Please insert a link like

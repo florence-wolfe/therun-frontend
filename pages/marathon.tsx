@@ -29,11 +29,11 @@ export const Marathon = ({
                 JSON.stringify(updatedLiveDataMap)
             );
 
-            if (data.type == "UPDATE") {
+            if (data.type === "UPDATE") {
                 newMap[user] = data.run;
             }
 
-            if (data.type == "DELETE") {
+            if (data.type === "DELETE") {
                 delete newMap[user];
             }
 

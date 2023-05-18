@@ -151,7 +151,7 @@ export const Game = ({ game }: { game: string }) => {
         return <div>An error occurred. Please contact me!</div>;
     }
 
-    if (data == undefined || !stats) {
+    if (data === undefined || data === null || !stats) {
         return (
             <div>
                 <h1>{game}</h1>
@@ -172,7 +172,7 @@ export const Game = ({ game }: { game: string }) => {
     }
 
     const currentCategoryLeaderboard = stats.categoryLeaderboards.find(
-        (leaderboard) => leaderboard.categoryName == currentCategory
+        (leaderboard) => leaderboard.categoryName === currentCategory
     ) as CategoryLeaderboard;
     const globalData = data.global;
 
@@ -193,7 +193,7 @@ export const Game = ({ game }: { game: string }) => {
             <Row className={styles.gameHeader}>
                 <Col xs={9}>
                     <div className={styles.gameImage}>
-                        {globalData.image && globalData.image != "noimage" && (
+                        {globalData.image && globalData.image !== "noimage" && (
                             <Image
                                 alt={"game-image"}
                                 src={globalData.image}
@@ -219,7 +219,7 @@ export const Game = ({ game }: { game: string }) => {
                                 ` - ${
                                     sortedCategories.find(
                                         (cat) =>
-                                            cat.categoryName == currentCategory
+                                            cat.categoryName === currentCategory
                                     ).categoryNameDisplay
                                 }`}
                         </Title>
@@ -284,14 +284,14 @@ export const Game = ({ game }: { game: string }) => {
                         <Row>
                             <GameStats
                                 stats={
-                                    currentCategory == "all-categories"
+                                    currentCategory === "all-categories"
                                         ? stats.gameLeaderboard.stats
                                         : currentCategoryLeaderboard.stats
                                 }
                             />
                         </Row>
                         <Row>
-                            {currentCategory == "all-categories" ? (
+                            {currentCategory === "all-categories" ? (
                                 <Col lg={12} xl={7}>
                                     <h2>Categories</h2>
                                     <CategoryOverview
@@ -307,7 +307,7 @@ export const Game = ({ game }: { game: string }) => {
                                         data={
                                             stats.categoryLeaderboards.find(
                                                 (leaderboard) =>
-                                                    leaderboard.categoryName ==
+                                                    leaderboard.categoryName ===
                                                     currentCategory
                                             ) as CategoryLeaderboard
                                         }
@@ -319,7 +319,7 @@ export const Game = ({ game }: { game: string }) => {
                                 <RecentFinishedRuns
                                     game={data.data.game.display}
                                     leaderboards={
-                                        currentCategory == "all-categories"
+                                        currentCategory === "all-categories"
                                             ? stats.gameLeaderboard
                                             : currentCategoryLeaderboard
                                     }
@@ -332,7 +332,7 @@ export const Game = ({ game }: { game: string }) => {
                         <LiveRunsForGame
                             game={data.data.game.display}
                             category={
-                                currentCategory == "all-categories"
+                                currentCategory === "all-categories"
                                     ? null
                                     : currentCategory
                             }
@@ -340,7 +340,7 @@ export const Game = ({ game }: { game: string }) => {
                     </Tab>
                     <Tab eventKey="leaderboards" title="Leaderboards">
                         <h2>Leaderboards</h2>
-                        {currentCategory == "all-categories" ? (
+                        {currentCategory === "all-categories" ? (
                             <GameLeaderboards
                                 leaderboards={stats.gameLeaderboard}
                             />

@@ -56,11 +56,11 @@ export const Live = ({
 
             if (
                 !forceGame ||
-                data.type == "DELETE" ||
+                data.type === "DELETE" ||
                 (!forceCategory &&
-                    forceGame.toLowerCase() == data.run.game.toLowerCase()) ||
-                (forceGame.toLowerCase() == data.run.game.toLowerCase() &&
-                    forceCategory.toLowerCase() ==
+                    forceGame.toLowerCase() === data.run.game.toLowerCase()) ||
+                (forceGame.toLowerCase() === data.run.game.toLowerCase() &&
+                    forceCategory.toLowerCase() ===
                         data.run.category.toLowerCase())
             ) {
                 const user = data.user;
@@ -68,14 +68,14 @@ export const Live = ({
                     JSON.stringify(updatedLiveDataMap)
                 );
 
-                if (data.type == "UPDATE") {
+                if (data.type === "UPDATE") {
                     newMap[user] = data.run;
                 }
 
-                if (data.type == "DELETE") {
+                if (data.type === "DELETE") {
                     delete newMap[user];
 
-                    if (currentlyViewing == user) {
+                    if (currentlyViewing === user) {
                         setCurrentlyViewing(getRecommendedStream(newMap));
                     }
                 }
@@ -158,14 +158,14 @@ export const Live = ({
                 </div>
             </div>
             <Row>
-                {Object.values(updatedLiveDataMap).length == 0 && (
+                {Object.values(updatedLiveDataMap).length === 0 && (
                     <div>Unfortunately, nobody is running live now...</div>
                 )}
 
                 {Object.values(updatedLiveDataMap).length > 0 &&
                     Object.values(updatedLiveDataMap).filter((liveRun) =>
                         liveRunIsInSearch(liveRun, search)
-                    ).length == 0 && <div>No runs matched your search!</div>}
+                    ).length === 0 && <div>No runs matched your search!</div>}
 
                 {Object.values(updatedLiveDataMap)
                     .filter((liveRun) => liveRunIsInSearch(liveRun, search))
@@ -244,7 +244,7 @@ export const LivesplitTimer = ({
     return (
         <div className={className}>
             <div>
-                {liveRun.currentSplitIndex == liveRun.splits.length &&
+                {liveRun.currentSplitIndex === liveRun.splits.length &&
                     liveRun.splits[liveRun.splits.length - 1].splitTime && (
                         <div>
                             {splitTime && (
@@ -369,7 +369,7 @@ export const liveRunIsInSearch = (liveRun: LiveRun, search: string) => {
 export const liveRunArrayToMap = (liveData: LiveRun[]) => {
     liveData.sort((a, b) => {
         if (a.importance > b.importance) return -1;
-        if (a.importance == b.importance) return 0;
+        if (a.importance === b.importance) return 0;
         return 1;
     });
 

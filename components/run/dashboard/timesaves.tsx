@@ -418,7 +418,7 @@ export const Timesaves = ({
                                     </td>
 
                                     <td className={styles.optionalColumn}>
-                                        {split.timeSave == 0
+                                        {split.timeSave === 0
                                             ? "Need gold"
                                             : `${(split.timeSave * 100).toFixed(
                                                   2

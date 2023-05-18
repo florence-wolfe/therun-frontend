@@ -90,7 +90,7 @@ export const TournamentRuns = ({ data }) => {
         }
 
         if (sortColumn === "user") {
-            if (a.user == b.user) res = 0;
+            if (a.user === b.user) res = 0;
             else res = a.user > b.user ? 1 : -1;
         }
 
@@ -116,9 +116,9 @@ export const TournamentRuns = ({ data }) => {
         if (target.includes("«")) {
             setActive(1);
         } else if (target.includes("‹")) {
-            setActive(active == 1 ? 1 : active - 1);
+            setActive(active === 1 ? 1 : active - 1);
         } else if (target.includes("›")) {
-            setActive(active == last ? last : active + 1);
+            setActive(active === last ? last : active + 1);
         } else if (target.includes("»")) {
             setActive(last);
         } else {

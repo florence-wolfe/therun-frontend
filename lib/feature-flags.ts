@@ -28,7 +28,7 @@ export const getFeatureFlag = async (
 };
 
 const parseBoolean = (val: unknown, defVal: boolean) => {
-    if (val == undefined) {
+    if (val === null || val === undefined) {
         return defVal;
     }
     const value = val.toString().toLowerCase().trim();

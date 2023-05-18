@@ -77,14 +77,14 @@ export const GenericTournament = ({
                     JSON.stringify(updatedLiveDataMap)
                 );
 
-                if (newData.type == "UPDATE") {
+                if (newData.type === "UPDATE") {
                     newMap[user] = newData.run;
                 }
 
-                if (newData.type == "DELETE") {
+                if (newData.type === "DELETE") {
                     delete newMap[user];
 
-                    if (recommendedStream == user) {
+                    if (recommendedStream === user) {
                         const newRecommendedStream = getRecommendedStream(
                             newMap,
                             username
@@ -379,7 +379,7 @@ export const GenericTournament = ({
                             {tournamentLeaderboards && (
                                 <span>
                                     {" "}
-                                    {leaderboard == "pbIGT" && (
+                                    {leaderboard === "pbIGT" && (
                                         <div>
                                             {getLeaderboard(
                                                 "Tournament PB (IGT)",
@@ -395,7 +395,7 @@ export const GenericTournament = ({
                                             )}
                                         </div>
                                     )}
-                                    {leaderboard == "pb" && (
+                                    {leaderboard === "pb" && (
                                         <div>
                                             {getLeaderboard(
                                                 "Personal Best",
@@ -415,7 +415,7 @@ export const GenericTournament = ({
                                     {tournament.pointDistribution &&
                                         tournament.pointDistribution.length >
                                             0 &&
-                                        leaderboard == "points" && (
+                                        leaderboard === "points" && (
                                             <div>
                                                 {getLeaderboard(
                                                     "Qualification Points",
@@ -441,7 +441,7 @@ export const GenericTournament = ({
                                         )}
                                     {qualifierData &&
                                         qualifierData.leaderboards &&
-                                        leaderboard == "qualifier" && (
+                                        leaderboard === "qualifier" && (
                                             <div>
                                                 {getLeaderboard(
                                                     "Qualifier PB",
@@ -464,7 +464,7 @@ export const GenericTournament = ({
                                                 )}
                                             </div>
                                         )}
-                                    {leaderboard == "sob" && (
+                                    {leaderboard === "sob" && (
                                         <div>
                                             {getLeaderboard(
                                                 "Sum of Bests",
@@ -480,7 +480,7 @@ export const GenericTournament = ({
                                             )}
                                         </div>
                                     )}
-                                    {leaderboard == "attempts" && (
+                                    {leaderboard === "attempts" && (
                                         <div>
                                             {getLeaderboard(
                                                 "Total Attempts",
@@ -492,7 +492,7 @@ export const GenericTournament = ({
                                             )}
                                         </div>
                                     )}
-                                    {leaderboard == "finishedAttempts" && (
+                                    {leaderboard === "finishedAttempts" && (
                                         <div>
                                             {getLeaderboard(
                                                 "Finished Attempts",
@@ -504,7 +504,7 @@ export const GenericTournament = ({
                                             )}
                                         </div>
                                     )}
-                                    {leaderboard == "playtime" && (
+                                    {leaderboard === "playtime" && (
                                         <div>
                                             {getLeaderboard(
                                                 "Total Playtime",
@@ -588,7 +588,7 @@ export const GenericTournament = ({
                                 </Col>
                             </Row>
                             <Row>
-                                {Object.values(updatedLiveDataMap).length ==
+                                {Object.values(updatedLiveDataMap).length ===
                                     0 && (
                                     <div>
                                         Unfortunately, nobody is running live
@@ -684,7 +684,7 @@ const liveRunArrayToMap = (
         }
         if (sort === "name") {
             if (a.user.toLowerCase() < b.user.toLowerCase()) return -1;
-            if (a.user.toLowerCase() == b.user.toLowerCase()) return 0;
+            if (a.user.toLowerCase() === b.user.toLowerCase()) return 0;
             return 1;
         }
         if (sort === "prediction") {
@@ -712,13 +712,13 @@ const liveRunArrayToMap = (
             if (!a.pb) return 1;
             if (!b.pb) return -1;
             if (a.pb < b.pb) return -1;
-            if (a.pb == b.pb) return 0;
+            if (a.pb === b.pb) return 0;
             return 1;
         }
         if (sort === "tournamentPb" || sort === "pb") {
             if (!leaderboards || !leaderboards.pbLeaderboard) {
                 if (a.pb < b.pb) return -1;
-                if (a.pb == b.pb) return 0;
+                if (a.pb === b.pb) return 0;
                 return 1;
             }
 
@@ -727,12 +727,12 @@ const liveRunArrayToMap = (
 
             const aLeaderboardRanking = leaderboards.pbLeaderboard.findIndex(
                 (count) => {
-                    return count.username == aUser;
+                    return count.username === aUser;
                 }
             );
             const bLeaderboardRanking = leaderboards.pbLeaderboard.findIndex(
                 (count) => {
-                    return count.username == bUser;
+                    return count.username === bUser;
                 }
             );
 
@@ -742,11 +742,11 @@ const liveRunArrayToMap = (
 
                 const newALeaderboardRanking =
                     leaderboardsRta.pbLeaderboard.findIndex((count) => {
-                        return count.username == aUser;
+                        return count.username === aUser;
                     });
                 const newBLeaderboardRanking =
                     leaderboardsRta.pbLeaderboard.findIndex((count) => {
-                        return count.username == bUser;
+                        return count.username === bUser;
                     });
 
                 if (newBLeaderboardRanking < 0) return -1;

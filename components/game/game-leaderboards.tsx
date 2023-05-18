@@ -19,7 +19,7 @@ export const getLeaderboard = (
     return (
         <Row>
             <Col>
-                <Table bordered striped={search.length == 0} hover responsive>
+                <Table bordered striped={search.length === 0} hover responsive>
                     <thead>
                         <tr>
                             <th style={{ width: "14%", textAlign: "center" }}>

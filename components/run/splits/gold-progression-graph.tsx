@@ -39,7 +39,7 @@ export const GoldProgressionGraph = ({
 
     const key = split.id;
 
-    if (key == undefined) return <></>;
+    if (key === undefined || key === null) return <></>;
 
     const golds: GoldHistory = [];
 
@@ -50,7 +50,7 @@ export const GoldProgressionGraph = ({
 
             if (
                 !currentSplit ||
-                currentSplit[splitTimeKey] == "0" ||
+                currentSplit[splitTimeKey] === "0" ||
                 isOutlier(
                     parseInt(split[groupKey].averageTime),
                     parseInt(split[groupKey].stdDev),
@@ -67,7 +67,7 @@ export const GoldProgressionGraph = ({
                 return;
 
             if (
-                golds.length == 0 ||
+                golds.length === 0 ||
                 parseInt(golds[golds.length - 1].time) >
                     parseInt(currentSplit[splitTimeKey])
             ) {

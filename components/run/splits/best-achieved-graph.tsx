@@ -24,7 +24,7 @@ export const BestAchievedGraph = ({
 }) => {
     const key = split.id;
 
-    if (key == undefined) return <></>;
+    if (key === undefined || key === null) return <></>;
 
     const golds: GoldHistory = [];
 
@@ -35,7 +35,7 @@ export const BestAchievedGraph = ({
 
             if (
                 !currentSplit ||
-                currentSplit.splitTime == "0" ||
+                currentSplit.splitTime === "0" ||
                 parseInt(currentSplit.totalTime) < parseInt(split.total.time) ||
                 isOutlier(
                     parseInt(split.total.averageTime),
@@ -47,7 +47,7 @@ export const BestAchievedGraph = ({
             }
 
             if (
-                golds.length == 0 ||
+                golds.length === 0 ||
                 parseInt(golds[golds.length - 1].time) >
                     parseInt(currentSplit.totalTime)
             ) {

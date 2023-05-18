@@ -160,7 +160,7 @@ export const SplitStats = ({
                 }).length;
 
                 const totalResetsOnSplit = history.filter((run) => {
-                    return run.splits.length == key;
+                    return run.splits.length === key;
                 }).length;
 
                 const consistencyScore = calculateConsistencyScore(
@@ -347,7 +347,7 @@ const calculateConsistencyScore = (
     stddev: number,
     resetPercentage: number
 ): number => {
-    if (stddev == 0 || avg == 0) return 0;
+    if (stddev === 0 || avg === 0) return 0;
 
     const stddevScore = avg / stddev;
 
@@ -425,7 +425,7 @@ export const OptionalColumns = ({
         <>
             <Col
                 style={{ color: "goldenrod" }}
-                className={selected == "Best ever" && optional ? "" : style}
+                className={selected === "Best ever" && optional ? "" : style}
             >
                 {!showDifference ? (
                     <div style={{ float: "left" }}>
@@ -445,7 +445,7 @@ export const OptionalColumns = ({
                     </div>
                 )}
             </Col>
-            <Col className={selected == "Average" && optional ? "" : style}>
+            <Col className={selected === "Average" && optional ? "" : style}>
                 {!showDifference ? (
                     <div style={{ float: "left" }}>
                         <DurationToFormatted
@@ -464,10 +464,10 @@ export const OptionalColumns = ({
                     </div>
                 )}
             </Col>
-            <Col className={selected == "Reached #" && optional ? "" : style}>
+            <Col className={selected === "Reached #" && optional ? "" : style}>
                 {reachedSplitCount}
             </Col>
-            <Col className={selected == "Reset %" && optional ? "" : style}>
+            <Col className={selected === "Reset %" && optional ? "" : style}>
                 {(
                     (totalResetsOnSplit / (totalResetsOnSplit + totalSplits)) *
                     100
@@ -475,13 +475,13 @@ export const OptionalColumns = ({
                 %
             </Col>
             <Col
-                className={selected == "Completion %" && optional ? "" : style}
+                className={selected === "Completion %" && optional ? "" : style}
             >
                 {((totalSplits / history.length) * 100).toFixed(2)}%
             </Col>
             <Col
                 className={
-                    selected == "Standard Deviation" && optional ? "" : style
+                    selected === "Standard Deviation" && optional ? "" : style
                 }
             >
                 <DurationToFormatted
@@ -491,7 +491,7 @@ export const OptionalColumns = ({
             </Col>
             <Col
                 style={{ minWidth: "10%" }}
-                className={selected == "Consistency" && optional ? "" : style}
+                className={selected === "Consistency" && optional ? "" : style}
             >
                 {consistencyScoreIndication(consistencyScore)}
             </Col>

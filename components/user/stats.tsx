@@ -302,11 +302,11 @@ export const PlaytimePerHourGraph = ({
                     }}
                     data={victoryData}
                     tickFormat={(a) => {
-                        if (parseInt(a) == 0 || parseInt(a) == 12)
+                        if (parseInt(a) === 0 || parseInt(a) === 12)
                             a = parseInt(a) + 12;
                         return a < 12
                             ? `${parseInt(a)}`
-                            : `${a == 12 ? 12 : a - 12}`;
+                            : `${a === 12 ? 12 : a - 12}`;
                     }}
                 />
 
@@ -328,8 +328,8 @@ export const PlaytimePerHourGraph = ({
                     }}
                     data={victoryData}
                     tickFormat={(a) => {
-                        if (parseInt(a) == 1) return "AM";
-                        if (parseInt(a) == 13) return "PM";
+                        if (parseInt(a) === 1) return "AM";
+                        if (parseInt(a) === 13) return "PM";
                     }}
                 />
                 <VictoryBar

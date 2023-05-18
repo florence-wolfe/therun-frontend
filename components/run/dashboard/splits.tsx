@@ -189,19 +189,19 @@ export const Splits = ({ splits, gameTime = false, run }: SplitsProps) => {
                                     </strong>
                                 </td>
 
-                                {selectedComparison == "Best Possible" && (
+                                {selectedComparison === "Best Possible" && (
                                     <TimeCell
                                         name={"bestPossibleTime"}
                                         split={split[splitToUse]}
                                     />
                                 )}
-                                {selectedComparison == "Best Achieved" && (
+                                {selectedComparison === "Best Achieved" && (
                                     <TimeCell
                                         name={"bestAchievedTime"}
                                         split={split[splitToUse]}
                                     />
                                 )}
-                                {selectedComparison == "Average" && (
+                                {selectedComparison === "Average" && (
                                     <TimeCell
                                         name={"averageTime"}
                                         split={split[splitToUse]}
@@ -233,7 +233,7 @@ export const Splits = ({ splits, gameTime = false, run }: SplitsProps) => {
                                                         splitToUse
                                                     ].alternative.find(
                                                         (time) =>
-                                                            time.name ==
+                                                            time.name ===
                                                             selectedAlternative
                                                     ).time || ""
                                                 }
@@ -249,7 +249,7 @@ export const Splits = ({ splits, gameTime = false, run }: SplitsProps) => {
                                                         splitToUse
                                                     ].alternative.find(
                                                         (time) =>
-                                                            time.name ==
+                                                            time.name ===
                                                             selectedAlternative
                                                     ).time
                                                 }

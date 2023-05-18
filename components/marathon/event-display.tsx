@@ -22,7 +22,7 @@ export const EventDisplay = ({
         if (lastMessage !== null) {
             const data = JSON.parse(lastMessage.data);
 
-            if (data.time != currentMessage.time) {
+            if (data.time !== currentMessage.time) {
                 messages.push(data);
                 setMessages(messages);
                 setCurrentMessage(data);
@@ -32,7 +32,7 @@ export const EventDisplay = ({
 
     return (
         <div>
-            {messages.length == 0 && (
+            {messages.length === 0 && (
                 <div>No events sent yet, sent events will show up here.</div>
             )}
             {messages

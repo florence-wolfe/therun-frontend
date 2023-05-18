@@ -82,7 +82,7 @@ export const TournamentStats = ({ data, tournament, gameTime = true }) => {
                     </div>
                     {gameTime && leaderboards && (
                         <span>
-                            {leaderboard == "pbIGT" && (
+                            {leaderboard === "pbIGT" && (
                                 <div>
                                     {getLeaderboard(
                                         "Tournament PB (IGT)",
@@ -98,7 +98,7 @@ export const TournamentStats = ({ data, tournament, gameTime = true }) => {
                                     )}
                                 </div>
                             )}
-                            {leaderboard == "pb" && (
+                            {leaderboard === "pb" && (
                                 <div>
                                     {getLeaderboard(
                                         "Personal Best",
@@ -114,7 +114,7 @@ export const TournamentStats = ({ data, tournament, gameTime = true }) => {
                                     )}
                                 </div>
                             )}
-                            {leaderboard == "sob" && (
+                            {leaderboard === "sob" && (
                                 <div>
                                     {getLeaderboard(
                                         "Sum of Bests",
@@ -133,7 +133,7 @@ export const TournamentStats = ({ data, tournament, gameTime = true }) => {
                                     )}
                                 </div>
                             )}
-                            {leaderboard == "attempts" && (
+                            {leaderboard === "attempts" && (
                                 <div>
                                     {getLeaderboard(
                                         "Total Attempts",
@@ -148,7 +148,7 @@ export const TournamentStats = ({ data, tournament, gameTime = true }) => {
                                     )}
                                 </div>
                             )}
-                            {leaderboard == "finishedAttempts" && (
+                            {leaderboard === "finishedAttempts" && (
                                 <div>
                                     {getLeaderboard(
                                         "Finished Attempts",
@@ -163,7 +163,7 @@ export const TournamentStats = ({ data, tournament, gameTime = true }) => {
                                     )}
                                 </div>
                             )}
-                            {leaderboard == "playtime" && (
+                            {leaderboard === "playtime" && (
                                 <div>
                                     {getLeaderboard(
                                         "Total Playtime",

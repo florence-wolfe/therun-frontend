@@ -23,7 +23,7 @@ export const DarkModeSlider = () => {
                     onChange={(checked) => {
                         setTheme(!checked.target.checked ? "dark" : "light");
                     }}
-                    checked={theme == "light"}
+                    checked={theme === "light"}
                 />
                 <label className={styles.switch__label} htmlFor="Switch">
                     <span className={styles.switch__indicator}></span>

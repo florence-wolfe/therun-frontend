@@ -122,7 +122,7 @@ export const LiveUserRun = ({
 
     if (leaderboard) {
         const pbLeaderboardIndex = leaderboard.findIndex(
-            (count) => count.username == liveRun.user
+            (count) => count.username === liveRun.user
         );
 
         if (pbLeaderboardIndex > -1) {
@@ -133,7 +133,7 @@ export const LiveUserRun = ({
 
     if (leaderboardGameTime) {
         const pbLeaderboardIndex = leaderboardGameTime.findIndex(
-            (count) => count.username == liveRun.user
+            (count) => count.username === liveRun.user
         );
 
         if (pbLeaderboardIndex > -1) {
@@ -146,7 +146,7 @@ export const LiveUserRun = ({
         <div
             className={
                 styles.liveRunContainer +
-                (liveRun.user == currentlyActive
+                (liveRun.user === currentlyActive
                     ? ` ${styles.activeRunContainer}`
                     : "")
             }
@@ -170,7 +170,7 @@ export const LiveUserRun = ({
             <div>
                 {liveRun.gameImage &&
                     liveRun.gameImage.length > 0 &&
-                    liveRun.gameImage != "noimage" && (
+                    liveRun.gameImage !== "noimage" && (
                         <div>
                             <Image
                                 alt={"Game Image"}
@@ -191,7 +191,7 @@ export const LiveUserRun = ({
                     )}
                 {(!liveRun.gameImage ||
                     liveRun.gameImage.length < 1 ||
-                    liveRun.gameImage == "noimage") && (
+                    liveRun.gameImage === "noimage") && (
                     <div style={{ marginTop: "17.5px" }}>
                         <Image
                             alt={"Logo"}
@@ -280,8 +280,8 @@ export const LiveUserRun = ({
 
                                     {!showGameCategory &&
                                         liveRun.pb &&
-                                        liveRun.pb != tournamentPbGameTime &&
-                                        liveRun.pb != tournamentPb && (
+                                        liveRun.pb !== tournamentPbGameTime &&
+                                        liveRun.pb !== tournamentPb && (
                                             <div className={styles.game}>
                                                 Personal Best -{" "}
                                                 {

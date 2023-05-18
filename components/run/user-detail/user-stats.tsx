@@ -4,7 +4,7 @@ import { DurationToFormatted, IsoToFormatted } from "../../util/datetime";
 
 export const UserStats = ({ runs }: { runs: Run[] }) => {
     const totalPlayTime = runs
-        .filter((run) => !!run.totalRunTime && run.totalRunTime != "NaN")
+        .filter((run) => !!run.totalRunTime && run.totalRunTime !== "NaN")
         .map((run) => parseInt(run.totalRunTime))
         .reduce((a, b) => a + b, 0)
         .toString();

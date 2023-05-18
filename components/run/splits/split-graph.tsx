@@ -24,7 +24,7 @@ export const SplitGraph = ({
     }, [total]);
     const key = split.id;
 
-    if (key == undefined) return <>aa</>;
+    if (key === undefined || key === null) return <></>;
 
     const splitGroups: Map<number, number> = new Map<number, number>();
 
@@ -38,7 +38,7 @@ export const SplitGraph = ({
 
             if (
                 !currentSplit ||
-                currentSplit[splitTimeKey] == "0" ||
+                currentSplit[splitTimeKey] === "0" ||
                 isOutlier(
                     parseInt(split[groupKey].averageTime),
                     parseInt(split[groupKey].stdDev),

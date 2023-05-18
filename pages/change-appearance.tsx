@@ -119,7 +119,7 @@ const PatreonSettings = ({ userPatreonData, session }) => {
                     return (
                         <Row key={n} style={{ width: "100%" }}>
                             {patreonStyles()
-                                .filter((style) => style.tier == n)
+                                .filter((style) => style.tier === n)
                                 .map((style, key) => {
                                     return (
                                         <Col
@@ -132,7 +132,7 @@ const PatreonSettings = ({ userPatreonData, session }) => {
                                             onClick={() => {
                                                 if (
                                                     userPatreonData.tier >= n ||
-                                                    session.username ==
+                                                    session.username ===
                                                         "joeys64"
                                                 ) {
                                                     setColorPreference(
@@ -151,7 +151,7 @@ const PatreonSettings = ({ userPatreonData, session }) => {
                                                         ? styles.nameSelector
                                                         : " "
                                                 } ${
-                                                    colorPreference == style.id
+                                                    colorPreference === style.id
                                                         ? styles.nameSelectorSelected
                                                         : ""
                                                 }`}
@@ -251,7 +251,7 @@ const PatreonSettings = ({ userPatreonData, session }) => {
                     </div>
                 </div>
                 {(userPatreonData.tier > 2 ||
-                    session.username == "joeys64") && (
+                    session.username === "joeys64") && (
                     <div className={styles.preferenceContainer}>
                         <div className={styles.preference}>
                             <Switch

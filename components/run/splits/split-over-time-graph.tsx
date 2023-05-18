@@ -33,7 +33,7 @@ export const SplitOverTimeGraph = ({
 
     const key = split.id;
 
-    if (key == undefined) return <></>;
+    if (key === undefined || key === null) return <></>;
 
     const splits: redHistory = [];
 
@@ -49,7 +49,7 @@ export const SplitOverTimeGraph = ({
 
             if (
                 !currentSplit ||
-                currentSplit[splitTimeKey] == "0" ||
+                currentSplit[splitTimeKey] === "0" ||
                 isOutlier(
                     parseInt(split[groupKey].averageTime),
                     parseInt(split[groupKey].stdDev),
