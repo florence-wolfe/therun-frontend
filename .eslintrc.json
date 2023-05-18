@@ -1,31 +1,29 @@
 {
-  "extends": [
-    "next",
-    "prettier",
-    "next/core-web-vitals",
-    "plugin:github/recommended",
-    "plugin:prettier/recommended"
-  ],
-  "plugins": [
-    "react",
-    "github",
-    "prettier"
-  ],
-  "rules": {
-    "@next/next/no-page-custom-font": "off",
-    "react-hooks/exhaustive-deps": "off",
-    "@next/next/google-font-display": "off",
-    "filenames/match-regex": "off",
-    "no-irregular-whitespace": "off",
-    "import/no-named-as-default": "off",
-    "github/array-foreach": "off",
-    "eqeqeq": "off",
-    "i18n-text/no-en": "off",
-    "prettier/prettier": [
-      "error",
-      {
-        "endOfLine": "auto"
-      }
-    ]
-  }
+    "extends": [
+        "next/core-web-vitals",
+        "plugin:github/recommended",
+        "plugin:prettier/recommended",
+        "eslint:recommended",
+        "plugin:@typescript-eslint/recommended"
+    ],
+    "plugins": ["react", "@typescript-eslint"],
+    "parser": "@typescript-eslint/parser",
+    "root": true,
+    "rules": {
+        "@next/next/no-page-custom-font": "off",
+        "react-hooks/exhaustive-deps": "off",
+        "@next/next/google-font-display": "off",
+        "filenames/match-regex": "off",
+        "no-irregular-whitespace": "off",
+        "import/no-named-as-default": "off",
+        "github/array-foreach": "off",
+        "eqeqeq": "off",
+        "i18n-text/no-en": "off",
+        "prettier/prettier": [
+            "error",
+            {
+                "endOfLine": "auto"
+            }
+        ]
+    }
 }
