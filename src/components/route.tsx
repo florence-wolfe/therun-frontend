@@ -13,10 +13,12 @@ export const Route = React.memo<RouteProps>(
     ({ path, label, nested = false }) => {
         const pathname = usePathname();
         console.log({ path, pathname, nested });
-        const isActive = React.useMemo(
-            () => pathname == path,
-            [pathname, path],
-        );
+        const isActive = React.useMemo(() => {
+            // Split the route into segments while preserving the `/`
+            // Doing only `.split('/')` will remove them
+            const [basePath] = pathname.split(/(?=\/)/);
+            return basePath === path;
+        }, [pathname, path]);
         return (
             <li
                 className={`ps-3 ${
