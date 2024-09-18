@@ -12,7 +12,6 @@ export interface RouteProps {
 export const Route = React.memo<RouteProps>(
     ({ path, label, nested = false }) => {
         const pathname = usePathname();
-        console.log({ path, pathname, nested });
         const isActive = React.useMemo(() => {
             // Split the route into segments while preserving the `/`
             // Doing only `.split('/')` will remove them

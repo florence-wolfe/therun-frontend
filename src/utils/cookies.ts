@@ -10,7 +10,7 @@ export const COOKIE_KEY = {
     THEME: "theme",
 } as const;
 
-export const getCookieKey = async (
+export const getCookieValue = async (
     key: ValuesOf<typeof COOKIE_KEY>,
     defaultValue?: string,
 ) => {

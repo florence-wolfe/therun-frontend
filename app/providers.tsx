@@ -32,7 +32,7 @@ export function Providers({
 
 // Kind of a hack that lets us set the theme using next-themes `setTheme`
 // It can't be done in the Providers component because it has to be within `<ThemeProvider>`
-const ThemeInitializer = ({ defaultTheme = "system" }) => {
+const ThemeInitializer = ({ defaultTheme = "dark" }) => {
     const { setTheme } = useTheme();
 
     useEffect(() => {

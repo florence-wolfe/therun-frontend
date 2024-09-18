@@ -11,7 +11,7 @@ import buildMetadata from "~src/utils/metadata";
 import { Viewport } from "next";
 import { SessionErrorBoundary } from "~src/components/errors/session.error-boundary";
 import { Navigation } from "~src/components/navigation";
-import { getCookieKey } from "~src/utils/cookies";
+import { getCookieValue } from "~src/utils/cookies";
 
 export const metadata = buildMetadata();
 export const viewport: Viewport = {
@@ -29,12 +29,12 @@ export default async function RootLayout({
         locale,
         // Providing all messages to the client side is the easiest way to get started
         messages,
-        defaultTheme = "system",
+        defaultTheme = "dark",
     ] = await Promise.all([
         getSession(),
         getLocale(),
         getMessages(),
-        getCookieKey("theme"),
+        getCookieValue("theme"),
     ]);
     const sessionError = session.sessionError;
     return (
